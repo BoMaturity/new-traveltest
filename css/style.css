@@ -1,0 +1,136 @@
+/* Reset some basic styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  /* Navigation bar */
+  nav {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Headings */
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  /* Section styles */
+  section {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Layout container */
+  .layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Home content to the left */
+  .layout .left {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  /* Other content center/right aligned */
+  .layout .right {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  /* Categories with images */
+  .categories {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .category {
+    flex: 1;
+    min-width: 250px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .category img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .category h3 {
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  .category p {
+    color: #666;
+  }
+  
+  /* Dropdown filter */
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  select {
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+  .category-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  .category-sections .category {
+    flex: 1;
+    min-width: 250px;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }

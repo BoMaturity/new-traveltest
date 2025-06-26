@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Suggestions</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="beach.html">Beaches</a>
+    <a href="temple.html">Temples</a>
+    <a href="country.html">Countries</a>
+  </nav>
+
+  <h1>Welcome to Travel Suggestions</h1>
+
+  <!-- Bộ lọc danh mục -->
+  <section>
+    <label for="categorySelect"><strong>Choose category:</strong></label>
+    <select id="categorySelect">
+      <option value="all">All</option>
+      <option value="beaches">Beaches</option>
+      <option value="temples">Temples</option>
+      <option value="countries">Countries</option>
+    </select>
+  </section>
+
+  <div class="category-sections" id="categorySections">
+    <section id="beaches" class="category">
+      <h2>Beaches</h2>
+      <ul>
+        <li>Da Nang Beach</li>
+        <li>Nha Trang</li>
+        <li>Phu Quoc</li>
+      </ul>
+      <img src="images/temp1.jpg" alt="Beach" class="section-image" />
+    </section>
+  
+    <section id="temples" class="category">
+      <h2>Temples</h2>
+      <ul>
+        <li>Tran Quoc Pagoda</li>
+        <li>One Pillar Pagoda</li>
+        <li>Thien Mu Pagoda</li>
+      </ul>
+      <img src="images/temp2.jpg" alt="Temple" class="section-image" />
+    </section>
+  
+    <section id="countries" class="category">
+      <h2>Countries</h2>
+      <ul>
+        <li>Japan</li>
+        <li>Thailand</li>
+        <li>Vietnam</li>
+      </ul>
+      <img src="images/temp3.jpg" alt="Country" class="section-image" />
+    </section>
+  </div>
+  
+
+  <!-- Hình ảnh đại diện các danh mục -->
+  <h2>Explore Categories</h2>
+  <div class="categories">
+    <div class="category">
+      <a href="beach.html"><img src="images/beach.jpg" alt="Beach" /></a>
+      <h3>Beach</h3>
+      <p>Relax on beautiful sunny beaches.</p>
+    </div>
+    <div class="category">
+      <a href="temple.html"><img src="images/temple.jpg" alt="Temple" /></a>
+      <h3>Temple</h3>
+      <p>Discover peaceful and ancient temples.</p>
+    </div>
+    <div class="category">
+      <a href="country.html"><img src="images/country.jpg" alt="Country" /></a>
+      <h3>Country</h3>
+      <p>Explore vibrant countries and their cultures.</p>
+    </div>
+  </div>
+
+  <script>
+    const select = document.getElementById("categorySelect");
+    const sections = {
+        beaches: document.getElementById("beaches"),
+        temples: document.getElementById("temples"),
+        countries: document.getElementById("countries")
+    };
+
+    select.addEventListener("change", (e) => {
+        const value = e.target.value;
+        if (value === "all") {
+            Object.values(sections).forEach(section => section.style.display = "block");
+        } else {
+            Object.entries(sections).forEach(([key, section]) => {
+            section.style.display = key === value ? "block" : "none";
+            });
+        }
+    });
+  </script>
+</body>
+</html>
