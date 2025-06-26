@@ -10,31 +10,31 @@
       "name": "Nha Trang",
       "category": "beaches",
       "images": ["images/nha_trang1.jpg", "images/nha_trang2.jpg"],
-      "description": "Famous for its beachfront and scuba diving."
+      "description": "Famous for its beachfront and scuba diving in Vietnam."
     },
     {
       "name": "Phu Quoc",
       "category": "beaches",
       "images": ["images/phu_quoc1.jpg", "images/phu_quoc2.jpg"],
-      "description": "An island paradise with stunning sunsets."
+      "description": "An island paradise with stunning sunsets in Vietnam."
     },
     {
       "name": "Tran Quoc Pagoda",
       "category": "temples",
       "images": ["images/tran_quoc1.jpg", "images/tran_quoc2.jpg"],
-      "description": "The oldest Buddhist temple in Hanoi."
+      "description": "The oldest Buddhist temple in Hanoi Vietnam."
     },
     {
       "name": "One Pillar Pagoda",
       "category": "temples",
       "images": ["images/one_pillar1.jpg", "images/one_pillar2.jpg"],
-      "description": "An iconic historic Buddhist temple in Hanoi."
+      "description": "An iconic historic Buddhist temple in Hanoi Vietnam."
     },
     {
       "name": "Thien Mu Pagoda",
       "category": "temples",
       "images": ["images/thien_mu1.jpg", "images/thien_mu2.jpg"],
-      "description": "A historic pagoda in Hue overlooking the Perfume River."
+      "description": "A historic pagoda in Hue overlooking the Perfume River Vietnam."
     },
     {
       "name": "Japan",
@@ -67,10 +67,64 @@
       "description": "A country of modern technology and rich cultural heritage."
     },
     {
-      "name": "China",
+      "name": "The Great Wall",
       "category": "countries",
-      "images": ["images/china1.jpg", "images/china2.jpg"],
-      "description": "Home to the Great Wall and ancient civilizations."
+      "images": ["images/china3.jpg"],
+      "description": "Home to the Great Wall and ancient civilizations in China."
+    },
+    {
+      "name": "Chinese city",
+      "category": "countries",
+      "images": ["images/china2.jpg"],
+      "description": "Well developed city in china."
+    },
+    {
+      "name": "Gyeongbokgung Palace",
+      "category": "temples",
+      "images": ["images/gyeongbokgung1.jpg"],
+      "description": "A majestic palace and historic site in Seoul. Located in South Korea."
+    },
+    {
+      "name": "Shaolin Temple",
+      "category": "temples",
+      "images": ["images/china5.jpg"],
+      "description": "Ancient Chinese Buddhist temple famous for martial arts. Located in China ."
+    },
+    {
+      "name": "Wat Thai Temple",
+      "category": "temples",
+      "images": ["images/watthai1.jpg"],
+      "description": "A Thai-style Buddhist temple located in California. Located in the United States."
+    },
+    {
+      "name": "Okinawa Beach",
+      "category": "beaches",
+      "images": ["images/okinawa1.jpg"],
+      "description": "A tropical beach paradise in Okinawa, Japan with crystal clear waters."
+    },
+    {
+      "name": "Haeundae Beach",
+      "category": "beaches",
+      "images": ["images/haeundae1.jpg"],
+      "description": "Famous beach in Busan, South Korea, popular for festivals and nightlife."
+    },
+    {
+      "name": "Sanya Beach",
+      "category": "beaches",
+      "images": ["images/sanya1.jpg"],
+      "description": "A scenic beach on Hainan Island, China, known as the 'Hawaii of China'."
+    },
+    {
+      "name": "Miami Beach",
+      "category": "beaches",
+      "images": ["images/miami1.jpg"],
+      "description": "A lively beach in Florida, USA known for its nightlife and Art Deco scene."
+    },
+    {
+      "name": "Senso-ji Temple",
+      "category": "temples",
+      "images": ["images/sensoji1.jpg"],
+      "description": "Tokyo's oldest temple located in Asakusa, Japan, known for its large lantern gate."
     }
   ]
 }

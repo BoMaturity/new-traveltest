@@ -5,22 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Suggestions</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+/* New Navigation Bar Style */
+nav {
+  background-color: #000; /* đổi thành màu đen */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: sans-serif;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+nav .nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold; /* chữ in đậm hơn */
+}
+
+nav .nav-links a:hover {
+  text-decoration: underline;
+}
+
+nav .search-bar {
+  display: flex;
+  gap: 5px;
+}
+
+nav .search-bar input {
+  padding: 5px;
+  font-weight: bold; /* in đậm chữ trong input */
+}
+
+nav .search-bar button {
+  background-color: #ffca28;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold; /* in đậm chữ trong nút */
+}
+
+nav .search-bar button.clear-btn {
+  background-color: #ef5350;
+  color: white;
+}
+
+#categorySection {
+  display: none;
+}
+
+#categorySelect,
+label[for="categorySelect"] {
+  display: none;
+}
+  </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
+    <div class="logo">Fun_Travel</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search destinations..." />
+      <button id="searchBtn">🔍</button>
+      <button id="clearBtn" class="clear-btn">❌</button>
+    </div>
   </nav>
 
-  <h1>Welcome to Travel Suggestions</h1>
-  <p>Discover your next destination by exploring beautiful beaches, ancient temples, and vibrant countries across Asia.</p>
-
-  <section class="search-box">
-    <label for="searchInput"><strong>Search destinations:</strong></label>
-    <input type="text" id="searchInput" placeholder="Type to search..." />
-    <button id="searchBtn">Search</button>
-    <button id="clearBtn">Clear</button>
+  <header style="background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat; padding: 100px 0; color: white; text-align: center;">
+    <h1 style="font-size: 3rem; text-shadow: 2px 2px 4px #000;">Welcome to Fun_Travel</h1>
+  </header>
+  
+  <section style="margin: -60px auto 40px auto; background: white; max-width: 800px; padding: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); border-radius: 10px; text-align: center;">
+    <h2>Explore Asia Like Never Before</h2>
+    <p><strong>Fun_Travel</strong> is your go-to platform for discovering the most stunning travel destinations across Asia — from tranquil beaches and ancient temples to vibrant cultures and hidden gems. Whether you're looking for a peaceful retreat or an adventurous journey, we've got the perfect spot waiting for you.</p>
+    <p><strong>Since we're based in Vietnam</strong>, why not begin your journey right here? From the crystal-clear waters of Da Nang and Phu Quoc to the historic beauty of Tran Quoc Pagoda, Vietnam is the perfect starting point for your Asian adventure.</p>
   </section>
 
   <section>
@@ -33,31 +102,11 @@
     </select>
   </section>
 
-  <div class="category-sections" id="categorySections"></div>
-
+  <!-- <div id="categorySections"></div> -->
   <section id="searchResults" style="display: none;">
     <h2>Search Results</h2>
     <div id="resultsContainer" class="categories"></div>
   </section>
-
-  <h2>Explore Categories</h2>
-  <div class="categories">
-    <div class="category">
-      <a href="beach.html"><img src="images/beach.jpg" alt="Beach" /></a>
-      <h3>Beach</h3>
-      <p>Relax on beautiful sunny beaches.</p>
-    </div>
-    <div class="category">
-      <a href="temple.html"><img src="images/temple.jpg" alt="Temple" /></a>
-      <h3>Temple</h3>
-      <p>Discover peaceful and ancient temples.</p>
-    </div>
-    <div class="category">
-      <a href="country.html"><img src="images/country.jpg" alt="Country" /></a>
-      <h3>Country</h3>
-      <p>Explore vibrant countries and their cultures.</p>
-    </div>
-  </div>
 
   <script>
     const categorySelect = document.getElementById("categorySelect");
@@ -74,10 +123,10 @@
       .then(res => res.json())
       .then(json => {
         data = json.destinations;
-        renderCategoryBlocks(data);
+        renderDestinations(data);
       });
 
-    function renderCategoryBlocks(list) {
+    function renderDestinations(list) {
       container.innerHTML = "";
       const grouped = { beaches: [], temples: [], countries: [] };
 
@@ -87,19 +136,20 @@
 
       for (const [key, items] of Object.entries(grouped)) {
         if (!items.length) continue;
-
         const section = document.createElement("section");
         section.className = "category";
         section.id = key;
-
-        const itemNames = items.map(item => `<li>${item.name}</li>`).join("");
-
-        const representativeImage = items[items.length - 1].images[0]; // lấy ảnh đầu của item cuối
-        section.innerHTML = `
-          <h2>${capitalize(key)}</h2>
-          <ul>${itemNames}</ul>
-          <img src="${representativeImage}" alt="${key}" class="section-image" />
-        `;
+        section.innerHTML = `<h2>${capitalize(key)}</h2>`;
+        items.forEach(item => {
+          const div = document.createElement("div");
+          div.className = "item-block";
+          div.innerHTML = `
+            <h4>${item.name}</h4>
+            <img src="${item.images[0]}" alt="${item.name}" class="section-image" />
+            <p>${item.description}</p>
+          `;
+          section.appendChild(div);
+        });
         container.appendChild(section);
       }
     }
@@ -111,51 +161,54 @@
     categorySelect.addEventListener("change", e => {
       const value = e.target.value;
       const filtered = value === "all" ? data : data.filter(item => item.category === value);
-      renderCategoryBlocks(filtered);
+      renderDestinations(filtered);
       searchResultsSection.style.display = "none";
       container.style.display = "block";
     });
 
     searchBtn.addEventListener("click", () => {
-  const query = searchInput.value.toLowerCase().trim();
-  if (!query) return;
+      const query = searchInput.value.toLowerCase().trim();
+      if (!query) return;
 
-  const matched = data.filter(item => item.name.toLowerCase().includes(query));
-  resultsContainer.innerHTML = "";
+      const isCategory = ["beaches", "temples", "countries"].includes(query);
+      let matched = [];
 
-  if (matched.length > 0) {
-    matched.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "category";
+      if (isCategory) {
+        matched = data.filter(item => item.category.toLowerCase() === query);
+      } else {
+        matched = data.filter(item =>
+          item.name.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+        );
+      }
 
-      const imagesHTML = item.images.map(img => 
-        `<img src="${img}" alt="${item.name}" class="section-image" />`
-      ).join("");
+      resultsContainer.innerHTML = "";
 
-      div.innerHTML = `
-        <h3>${item.name}</h3>
-        ${imagesHTML}
-        <p>${item.description}</p>
-      `;
-      resultsContainer.appendChild(div);
+      if (matched.length > 0) {
+        matched.forEach(item => {
+          const div = document.createElement("div");
+          div.className = "category";
+          div.innerHTML = `
+            <h3>${item.name}</h3>
+            ${item.images.map(img => `<img src="${img}" alt="${item.name}" class="section-image" />`).join("")}
+            <p>${item.description}</p>
+          `;
+          resultsContainer.appendChild(div);
+        });
+        searchResultsSection.style.display = "block";
+        container.style.display = "none";
+      } else {
+        resultsContainer.innerHTML = `<p>No results found.</p>`;
+        searchResultsSection.style.display = "block";
+        container.style.display = "none";
+      }
     });
-
-    searchResultsSection.style.display = "block";
-    container.style.display = "none";
-  } else {
-    resultsContainer.innerHTML = `<p>No results found.</p>`;
-    searchResultsSection.style.display = "block";
-    container.style.display = "none";
-  }
-});
 
     clearBtn.addEventListener("click", () => {
-      searchInput.value = "";
-      categorySelect.value = "all";
-      renderCategoryBlocks(data);
-      searchResultsSection.style.display = "none";
-      container.style.display = "block";
-    });
+  searchInput.value = "";
+  resultsContainer.innerHTML = "";
+  searchResultsSection.style.display = "none";
+});
   </script>
 </body>
 </html>
