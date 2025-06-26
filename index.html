@@ -11,14 +11,18 @@
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact Us</a>
-    <a href="beach.html">Beaches</a>
-    <a href="temple.html">Temples</a>
-    <a href="country.html">Countries</a>
   </nav>
 
   <h1>Welcome to Travel Suggestions</h1>
+  <p>Discover your next destination by exploring beautiful beaches, ancient temples, and vibrant countries across Asia.</p>
 
-  <!-- Bộ lọc danh mục -->
+  <section class="search-box">
+    <label for="searchInput"><strong>Search destinations:</strong></label>
+    <input type="text" id="searchInput" placeholder="Type to search..." />
+    <button id="searchBtn">Search</button>
+    <button id="clearBtn">Clear</button>
+  </section>
+
   <section>
     <label for="categorySelect"><strong>Choose category:</strong></label>
     <select id="categorySelect">
@@ -29,40 +33,13 @@
     </select>
   </section>
 
-  <div class="category-sections" id="categorySections">
-    <section id="beaches" class="category">
-      <h2>Beaches</h2>
-      <ul>
-        <li>Da Nang Beach</li>
-        <li>Nha Trang</li>
-        <li>Phu Quoc</li>
-      </ul>
-      <img src="images/temp1.jpg" alt="Beach" class="section-image" />
-    </section>
-  
-    <section id="temples" class="category">
-      <h2>Temples</h2>
-      <ul>
-        <li>Tran Quoc Pagoda</li>
-        <li>One Pillar Pagoda</li>
-        <li>Thien Mu Pagoda</li>
-      </ul>
-      <img src="images/temp2.jpg" alt="Temple" class="section-image" />
-    </section>
-  
-    <section id="countries" class="category">
-      <h2>Countries</h2>
-      <ul>
-        <li>Japan</li>
-        <li>Thailand</li>
-        <li>Vietnam</li>
-      </ul>
-      <img src="images/temp3.jpg" alt="Country" class="section-image" />
-    </section>
-  </div>
-  
+  <div class="category-sections" id="categorySections"></div>
 
-  <!-- Hình ảnh đại diện các danh mục -->
+  <section id="searchResults" style="display: none;">
+    <h2>Search Results</h2>
+    <div id="resultsContainer" class="categories"></div>
+  </section>
+
   <h2>Explore Categories</h2>
   <div class="categories">
     <div class="category">
@@ -83,22 +60,101 @@
   </div>
 
   <script>
-    const select = document.getElementById("categorySelect");
-    const sections = {
-        beaches: document.getElementById("beaches"),
-        temples: document.getElementById("temples"),
-        countries: document.getElementById("countries")
-    };
+    const categorySelect = document.getElementById("categorySelect");
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const container = document.getElementById("categorySections");
+    const resultsContainer = document.getElementById("resultsContainer");
+    const searchResultsSection = document.getElementById("searchResults");
 
-    select.addEventListener("change", (e) => {
-        const value = e.target.value;
-        if (value === "all") {
-            Object.values(sections).forEach(section => section.style.display = "block");
-        } else {
-            Object.entries(sections).forEach(([key, section]) => {
-            section.style.display = key === value ? "block" : "none";
-            });
-        }
+    let data = [];
+
+    fetch("api.json")
+      .then(res => res.json())
+      .then(json => {
+        data = json.destinations;
+        renderCategoryBlocks(data);
+      });
+
+    function renderCategoryBlocks(list) {
+      container.innerHTML = "";
+      const grouped = { beaches: [], temples: [], countries: [] };
+
+      list.forEach(item => {
+        grouped[item.category].push(item);
+      });
+
+      for (const [key, items] of Object.entries(grouped)) {
+        if (!items.length) continue;
+
+        const section = document.createElement("section");
+        section.className = "category";
+        section.id = key;
+
+        const itemNames = items.map(item => `<li>${item.name}</li>`).join("");
+
+        const representativeImage = items[items.length - 1].images[0]; // lấy ảnh đầu của item cuối
+        section.innerHTML = `
+          <h2>${capitalize(key)}</h2>
+          <ul>${itemNames}</ul>
+          <img src="${representativeImage}" alt="${key}" class="section-image" />
+        `;
+        container.appendChild(section);
+      }
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    categorySelect.addEventListener("change", e => {
+      const value = e.target.value;
+      const filtered = value === "all" ? data : data.filter(item => item.category === value);
+      renderCategoryBlocks(filtered);
+      searchResultsSection.style.display = "none";
+      container.style.display = "block";
+    });
+
+    searchBtn.addEventListener("click", () => {
+  const query = searchInput.value.toLowerCase().trim();
+  if (!query) return;
+
+  const matched = data.filter(item => item.name.toLowerCase().includes(query));
+  resultsContainer.innerHTML = "";
+
+  if (matched.length > 0) {
+    matched.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "category";
+
+      const imagesHTML = item.images.map(img => 
+        `<img src="${img}" alt="${item.name}" class="section-image" />`
+      ).join("");
+
+      div.innerHTML = `
+        <h3>${item.name}</h3>
+        ${imagesHTML}
+        <p>${item.description}</p>
+      `;
+      resultsContainer.appendChild(div);
+    });
+
+    searchResultsSection.style.display = "block";
+    container.style.display = "none";
+  } else {
+    resultsContainer.innerHTML = `<p>No results found.</p>`;
+    searchResultsSection.style.display = "block";
+    container.style.display = "none";
+  }
+});
+
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      categorySelect.value = "all";
+      renderCategoryBlocks(data);
+      searchResultsSection.style.display = "none";
+      container.style.display = "block";
     });
   </script>
 </body>

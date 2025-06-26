@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beaches</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <nav>
@@ -15,8 +15,35 @@
     <a href="temple.html">Temples</a>
     <a href="country.html">Countries</a>
   </nav>
+
   <h1>Beach Recommendations</h1>
-  <img src="images/Beaches.jpg" alt="Beach 1">
-  <img src="images/Beaches2.jpg" alt="Beach 2">
+  <div class="category">
+    <img src="images/da_nang1.jpg" alt="Da Nang Beach" class="section-image" />
+    <p>Da Nang Beach - Stunning white sand and vibrant waves.</p>
+  </div>
+  <div class="category">
+    <img src="images/nha_trang1.jpg" alt="Nha Trang" class="section-image" />
+    <p>Nha Trang - Ideal for diving and relaxing under the sun.</p>
+  </div>
 </body>
+<style>
+  .category {
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.category img.section-image {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.category p {
+  font-size: 1rem;
+  color: #333;
+}
+</style>
 </html>

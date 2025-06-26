@@ -1,0 +1,76 @@
+{
+  "destinations": [
+    {
+      "name": "Da Nang Beach",
+      "category": "beaches",
+      "images": ["images/da_nang1.jpg", "images/da_nang2.jpg"],
+      "description": "A beautiful beach in central Vietnam with white sand and clear water."
+    },
+    {
+      "name": "Nha Trang",
+      "category": "beaches",
+      "images": ["images/nha_trang1.jpg", "images/nha_trang2.jpg"],
+      "description": "Famous for its beachfront and scuba diving."
+    },
+    {
+      "name": "Phu Quoc",
+      "category": "beaches",
+      "images": ["images/phu_quoc1.jpg", "images/phu_quoc2.jpg"],
+      "description": "An island paradise with stunning sunsets."
+    },
+    {
+      "name": "Tran Quoc Pagoda",
+      "category": "temples",
+      "images": ["images/tran_quoc1.jpg", "images/tran_quoc2.jpg"],
+      "description": "The oldest Buddhist temple in Hanoi."
+    },
+    {
+      "name": "One Pillar Pagoda",
+      "category": "temples",
+      "images": ["images/one_pillar1.jpg", "images/one_pillar2.jpg"],
+      "description": "An iconic historic Buddhist temple in Hanoi."
+    },
+    {
+      "name": "Thien Mu Pagoda",
+      "category": "temples",
+      "images": ["images/thien_mu1.jpg", "images/thien_mu2.jpg"],
+      "description": "A historic pagoda in Hue overlooking the Perfume River."
+    },
+    {
+      "name": "Japan",
+      "category": "countries",
+      "images": ["images/japan1.jpg", "images/japan2.jpg"],
+      "description": "Land of the rising sun, famous for Mount Fuji and cherry blossoms."
+    },
+    {
+      "name": "Thailand",
+      "category": "countries",
+      "images": ["images/thailand1.jpg", "images/thailand2.jpg"],
+      "description": "Known for its tropical beaches and ornate temples."
+    },
+    {
+      "name": "Vietnam",
+      "category": "countries",
+      "images": ["images/vietnam1.jpg", "images/vietnam2.jpg"],
+      "description": "A diverse country with beaches, rivers, and Buddhist pagodas."
+    },
+    {
+      "name": "United States",
+      "category": "countries",
+      "images": ["images/usa1.jpg", "images/usa2.jpg"],
+      "description": "A vast country known for its diverse landscapes and iconic cities."
+    },
+    {
+      "name": "South Korea",
+      "category": "countries",
+      "images": ["images/south_korea1.jpg", "images/south_korea2.jpg"],
+      "description": "A country of modern technology and rich cultural heritage."
+    },
+    {
+      "name": "China",
+      "category": "countries",
+      "images": ["images/china1.jpg", "images/china2.jpg"],
+      "description": "Home to the Great Wall and ancient civilizations."
+    }
+  ]
+}
