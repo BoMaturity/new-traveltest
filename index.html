@@ -116,24 +116,24 @@ label[for="categorySelect"] {
     const container = document.getElementById("categorySections");
     const resultsContainer = document.getElementById("resultsContainer");
     const searchResultsSection = document.getElementById("searchResults");
-
+    
     let data = [];
-
+    
     fetch("api.json")
       .then(res => res.json())
       .then(json => {
         data = json.destinations;
         renderDestinations(data);
       });
-
+    
     function renderDestinations(list) {
       container.innerHTML = "";
       const grouped = { beaches: [], temples: [], countries: [] };
-
+    
       list.forEach(item => {
         grouped[item.category].push(item);
       });
-
+    
       for (const [key, items] of Object.entries(grouped)) {
         if (!items.length) continue;
         const section = document.createElement("section");
@@ -153,11 +153,11 @@ label[for="categorySelect"] {
         container.appendChild(section);
       }
     }
-
+    
     function capitalize(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
-
+    
     categorySelect.addEventListener("change", e => {
       const value = e.target.value;
       const filtered = value === "all" ? data : data.filter(item => item.category === value);
@@ -165,16 +165,27 @@ label[for="categorySelect"] {
       searchResultsSection.style.display = "none";
       container.style.display = "block";
     });
-
+    
     searchBtn.addEventListener("click", () => {
       const query = searchInput.value.toLowerCase().trim();
       if (!query) return;
 
-      const isCategory = ["beaches", "temples", "countries"].includes(query);
+      const categoriesMap = {
+        beach: "beaches",
+        beaches: "beaches",
+        temple: "temples",
+        temples: "temples",
+        country: "countries",
+        countries: "countries"
+      };
+
+      const normalizedCategory = categoriesMap[query];
       let matched = [];
 
-      if (isCategory) {
-        matched = data.filter(item => item.category.toLowerCase() === query);
+      if (normalizedCategory) {
+        matched = data.filter(item => 
+          item.category.toLowerCase() === normalizedCategory
+        );
       } else {
         matched = data.filter(item =>
           item.name.toLowerCase().includes(query) ||
@@ -203,12 +214,13 @@ label[for="categorySelect"] {
         container.style.display = "none";
       }
     });
-
+    
     clearBtn.addEventListener("click", () => {
-  searchInput.value = "";
-  resultsContainer.innerHTML = "";
-  searchResultsSection.style.display = "none";
-});
-  </script>
+      searchInput.value = "";
+      resultsContainer.innerHTML = "";
+      searchResultsSection.style.display = "none";
+    });
+    </script>
+    
 </body>
 </html>

@@ -7,13 +7,13 @@
       "description": "A beautiful beach in central Vietnam with white sand and clear water."
     },
     {
-      "name": "Nha Trang",
+      "name": "Nha Trang Beach",
       "category": "beaches",
       "images": ["images/nha_trang1.jpg", "images/nha_trang2.jpg"],
       "description": "Famous for its beachfront and scuba diving in Vietnam."
     },
     {
-      "name": "Phu Quoc",
+      "name": "Phu Quoc Beach",
       "category": "beaches",
       "images": ["images/phu_quoc1.jpg", "images/phu_quoc2.jpg"],
       "description": "An island paradise with stunning sunsets in Vietnam."
@@ -52,6 +52,12 @@
       "name": "Vietnam",
       "category": "countries",
       "images": ["images/vietnam1.jpg", "images/vietnam2.jpg"],
+      "description": "A diverse country with beaches, rivers, and Buddhist pagodas."
+    },
+    {
+      "name": "HoChiMinh",
+      "category": "countries",
+      "images": ["images/vietnam3.jpg"],
       "description": "A diverse country with beaches, rivers, and Buddhist pagodas."
     },
     {
@@ -125,6 +131,48 @@
       "category": "temples",
       "images": ["images/sensoji1.jpg"],
       "description": "Tokyo's oldest temple located in Asakusa, Japan, known for its large lantern gate."
+    },
+    {
+      "name": "Tokyo",
+      "category": "countries",
+      "images": ["images/tokyo1.jpg"],
+      "description": "The bustling capital city of Japan, known for modern skyscrapers, historic temples, and vibrant culture."
+    },
+    {
+      "name": "Hanoi",
+      "category": "countries",
+      "images": ["images/hanoi1.jpg"],
+      "description": "Vietnam's historic capital city, rich in heritage and street food culture."
+    },
+    {
+      "name": "Beijing",
+      "category": "countries",
+      "images": ["images/beijing1.jpg"],
+      "description": "China's capital, home to the Forbidden City and the Great Wall."
+    },
+    {
+      "name": "New York City",
+      "category": "countries",
+      "images": ["images/nyc1.jpg"],
+      "description": "The largest city in the United States, famous for Times Square and Central Park."
+    },
+    {
+      "name": "Moscow",
+      "category": "countries",
+      "images": ["images/moscow1.jpg"],
+      "description": "Russia's capital city, known for the Kremlin and Red Square."
+    },
+    {
+      "name": "Seoul",
+      "category": "countries",
+      "images": ["images/seoul1.jpg"],
+      "description": "South Korea's dynamic capital city, blending tradition and modern life."
+    },
+    {
+      "name": "Barcelona",
+      "category": "countries",
+      "images": ["images/barcelona1.jpg", "images/barcelona2.jpg"],
+      "description": "A Spanish city famous for Gaudí's architecture and Mediterranean beaches."
     }
   ]
 }
